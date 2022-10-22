@@ -15,14 +15,16 @@ ListNode* start;
 ListNode* last;
 ListNode* loc;
 ListNode* ploc;
+ListNode* sloc;
 SinglyLinkedList(){
   start = nullptr;
   last = nullptr;
   loc = nullptr;
   ploc = nullptr;
+  sloc = nullptr;
 }
 bool isEmpty(){
-  return start==nullptr;
+  return (start==nullptr);
 }
 void insertAtFront(Dictionary val)
     {
@@ -96,17 +98,14 @@ void insertSorted(Dictionary val)
             }
         }
     }
-void printList()
+void printList(ListNode *headNode)
     {
-        ListNode *temp = start;
-        if (!(isEmpty()))
-        {
+        ListNode *temp = headNode;      
             while (temp != nullptr)
             {
-                cout << temp->data << endl;
+                cout << (temp->data)<<endl;
                 temp = temp->next;
             }
-        }
     }
 void deleteValue(Dictionary val)
     {
@@ -147,8 +146,23 @@ void printReverse(ListNode *HeadNode){
     }
     else{
         printReverse(HeadNode->next);
-        cout<<(HeadNode->next)->data<<endl;
+        cout<<(HeadNode->data)<<endl;
     }
 } 
+ListNode *reverseList(ListNode*headNode,ListNode* end){
+    ploc = nullptr;
+    loc = headNode;
+    
+    while (loc!=nullptr){
+        sloc = loc->next;
+        loc->next = ploc;
+        ploc = loc;
+        loc = sloc;      
+    }
+    headNode = ploc;
+    return headNode;
+    
+
+}
 
 };
