@@ -6,23 +6,28 @@ using namespace std;
 
 string filename; //stores filename
 
-void readFileData(ListNode *headNode) //reads text from a file and writes it to the AVL tree
+void readFileData(SinglyLinkedList *list) //reads text from a file and writes it to the AVL tree
 {
 	Dictionary *dict;
 	string word, meaning;
-	fstream fin;
+	ifstream fin;
 	cout << "\e[46mEnter the filename\x1b[0m "; 
 	cin.ignore();
-  cin >> filename;
-	fin.open(filename);
+  // cin >> filename;
+	fin.open("words.txt");
+  if (fin.is_open())
   cout << "\e[0;32mFile reading succesful.\x1b[0m\n";
   while( fin >> word )  //write into file name
   {
     fin.ignore();
     getline(fin,meaning);
     dict = new Dictionary(word,meaning);
-    cout << *dict << endl; //output newly created Dictionary object
+    list->insertSorted(*dict);
+    // cout << *dict << endl; //output newly created Dictionary object
     //remove above line insert data into a  linked list
+    // inserting entries into linked list
+    
+    
   }
 	fin.close();
 }
@@ -31,7 +36,7 @@ void writeToFile(ListNode *headNode) //write the linked list to a text file
 {
   string word, meaning;
   
-  fstream dictFile; //create fstream object for the file
+  ofstream dictFile; //create fstream object for the file
   cout << "\e[46mEnter the filename\x1b[0m "; 
 	cin.ignore();
   cin >> filename;
@@ -52,6 +57,7 @@ void writeToFile(ListNode *headNode) //write the linked list to a text file
 
 void mainMenu() //menu function
 {
+  SinglyLinkedList list;
   string word, meaning; //stores the word and meaning
   char choice;  //stores user choice for the actions
 
@@ -67,7 +73,7 @@ void mainMenu() //menu function
     {
       case('1'):
       {
-        readFileData(list.start);
+        // readFileData(list->start,list);
       }; break;
       case('2'):
       {
