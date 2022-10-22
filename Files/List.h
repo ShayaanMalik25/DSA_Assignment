@@ -141,6 +141,14 @@ void deleteValue(Dictionary val)
             }
         }
     }
-  
+void printReverse(ListNode *HeadNode){
+    if (HeadNode->next==nullptr){
+        cout<<HeadNode->data;
+    }
+    else{
+        printReverse(HeadNode->next);
+        cout<<(HeadNode->next)->data<<endl;
+    }
+} 
 
 };

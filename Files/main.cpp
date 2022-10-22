@@ -9,6 +9,7 @@ int main()
   // mainMenu(); //call the main menu function from Parser.h
   readFileData(list);
   writeToFile(list->start);
+  list->printReverse(list->start);
   // list->printList();
   return 0;
 }
