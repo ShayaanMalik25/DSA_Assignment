@@ -13,7 +13,7 @@ void readFileData(SinglyLinkedList *list) //reads text from a file and writes it
 	ifstream fin;
 	cout << "\e[46mEnter the filename\x1b[0m "; 
 	cin.ignore();
-  // cin >> filename;
+  cin >> filename;
 	fin.open("words.txt");
   if (fin.is_open())
   cout << "\e[0;32mFile reading succesful.\x1b[0m\n";
