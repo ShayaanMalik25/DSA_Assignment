@@ -142,27 +142,78 @@ void deleteValue(Dictionary val)
     }
 void printReverse(ListNode *HeadNode){
     if (HeadNode->next==nullptr){
-        cout<<HeadNode->data;
+        cout<<HeadNode->data<<endl;
     }
     else{
         printReverse(HeadNode->next);
         cout<<(HeadNode->data)<<endl;
     }
 } 
-ListNode *reverseList(ListNode*headNode,ListNode* end){
+ListNode *reverseList(SinglyLinkedList list){
     ploc = nullptr;
-    loc = headNode;
-    
+    loc = start;
+    // last = headNode;
     while (loc!=nullptr){
         sloc = loc->next;
         loc->next = ploc;
         ploc = loc;
         loc = sloc;      
     }
-    headNode = ploc;
-    return headNode;
-    
-
+    start = ploc;
+    return start;
 }
-
+int Length(){
+    ListNode* temp = start;
+    int length;
+    while (temp!=nullptr){
+        temp = temp->next;
+        length+=1;
+    }
+    return length;
+}
+bool isMatch(string actual,char toCheck){
+    for (int i=0;i<actual.length();i++){
+        if (actual[i]==toCheck)
+        return true;
+        
+    }
+    return false;
+}
+ListNode* filterByLetter(SinglyLinkedList *list, char letter){
+    ListNode *temp=list->start;
+    int count = 0;
+    bool first,end;
+    while (temp!=nullptr){
+        if (isMatch((temp->data).word,letter)){
+            if (temp==list->start){
+                cout<<"First true hai bsdk"<<endl;
+                first = true;}
+            if (temp==list->last)
+                end = true;
+            temp = temp->next;
+            count+=1;
+        }
+        else{
+            ListNode* temp1 = temp;
+            temp=temp->next;
+            list->deleteValue(temp1->data);
+    
+        }
+    }
+    cout<<"LIST FILTERED SUCCESSFULLY"<<endl;
+    if (count==0)
+    cout<<"No Nodes are a match"<<endl;
+    else if(count<list->Length())
+    cout<<count<<" numbers of nodes are a match"<<endl;
+    else if (count==list->Length())
+    cout<<"All nodes are a match"<<endl;
+    if(first)
+    cout<<"First node is a match"<<endl;
+    else if(end)
+    cout<<"Last node is a match"<<endl;
+    if (first && end){
+        cout<<"First and last nodes are also a match"<<endl;
+    }
+return start;
+}
 };

@@ -40,7 +40,7 @@ void writeToFile(ListNode *headNode) //write the linked list to a text file
   cout << "\e[46mEnter the filename\x1b[0m "; 
 	cin.ignore();
   cin >> filename;
-  dictFile.open(filename, std::ios::app); //create/open a text file in append mode. new information is always added to the end
+  dictFile.open(filename+".txt", std::ios::app); //create/open a text file in append mode. new information is always added to the end
 
   ListNode *iterator = headNode;
 
